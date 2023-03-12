@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block title %}Videos{% endblock title %}
+{% block navbarvideolink %}active{% endblock %}
+{% block content %}
+
+<div class="heading-page header-text">
+
+</div>
+
+<br>
+<span style="margin-left:2em;">Subscribe to Toras Imecha's Youtube Channel: <script src="https://apis.google.com/js/platform.js"></script>
+
+<div class="g-ytsubscribe" data-channelid="UCWQTDzbMQeZt3N4vhJDoiZQ" data-layout="default" data-count="default"></div>
+<div class="video row" style="padding:2em;"></span>
+
+    {% for video in videos %}
+    <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center text-center mb-4">
+        <iframe width="275px" height="auto" src="https://www.youtube.com/embed/{{ video }}" title="YouTube  player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {% endfor %}
+    <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center text-center mb-4">
+        <iframe allowfullscreen width="275px" height=auto title="Speech" src="https://player.vimeo.com/video/667407081?color&amp;autopause=0&amp;loop=0&amp;muted=0&amp;title=1&amp;portrait=1&amp;byline=1#t="></iframe>      </div>
+
+    </div>
+</div>
+
+{% endblock %}

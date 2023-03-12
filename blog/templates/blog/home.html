@@ -1,0 +1,259 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block head %}
+<!-- Event snippet for Website traffic conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-11002089664/3JDuCK2p2-UDEMChmv4o'});
+</script>
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+{% block navbarhomelink %}active{% endblock %}
+{% block navbarhomedot %}.{% endblock %}
+
+{% block content %}
+
+    <div class="main-banner header-text">
+      <div class="container-fluid" style="margin-bottom:-75px;">
+        <div class="owl-banner owl-carousel">
+          {% for post in posts %}
+            <div class="item">
+              <img src="{{ post.image.url }}" alt="">
+              <div class="item-content">
+                <div class="main-content" style="color:black;">
+
+                  <a href="{% url 'blog-post' post.pk %}"><h4 style="color:{{ post.title_color }};  font-size:2em;">{{ post.title }}</h4></a>
+                  <ul class="post-info">
+                    <li style="color:{{ post.title_color }}; font-size:1.2em"><{{ post.date_posted|date:"F d, Y" }}</li>
+                    <li style="color:{{ post.title_color }}; font-size:1.2em" >{{ post.postcomment_set.all|length}} comment{% if post.postcomment_set.all|length != 1 %}s {% endif %}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Banner Ends Here -->
+ 
+    <section class="blog-posts">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="all-blog-posts">
+              <div class="row">
+                {% for podcast in podcasts %}
+                    <div class="col-md-6 d-flex justify-content-center text-center ">
+                        
+                        <!--<iframe scrolling="no" id="{{ podcast }}" title="{{ podcast }}" frameborder="0" src="https://anchor.fm/torasimecha/embed/episodes/{{ podcast }}"></iframe>-->
+                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/{{ podcast }}?utm_source=generator" width="300" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                    </div>
+                {% endfor %}
+                <script>
+                    console.log({{ error }})
+                </script>
+
+
+                <div class="col-lg-12">
+                  <div class="main-button">
+                    <a href="{% url 'blog-audio' %}">See All Podcasts</a>
+                  </div>
+                   <section class="blog-posts grid-system">
+     
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="sidebar-item submit-comment">
+
+            <div class="col-lg-12">
+              <div class="sidebar-item submit-comment">
+                <div class="sidebar-heading">
+                  <h2>Yes! Sign me up for new inspirational posts, podcasts, and videos. Subscribe here:</h2>
+                </div>
+                <div class="content">
+                  <form id="comment" action="{% url 'blog-notifications' %}" method="post">
+                    {% csrf_token %}
+                    <input name="check" type="text" style="display: none">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="email" type="email" id="email" placeholder="Your Email" required="">
+                        </fieldset>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <fieldset>
+                          <button type="submit" id="form-submit" class="main-button">Submit</button>
+                        </fieldset>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <br>
+            <hr>
+            <div class="main-button">
+                <a href="#">Support Toras Imecha</a>
+            </div>
+            <hr>
+            <div class="col-lg-12">
+              <div class="sidebar-item submit-comment">
+                <div class="sidebar-heading">
+                  <h2>Contact Us!</h2>
+                </div>
+                <div class="content">
+                  <form id="contactusform" action="{% url 'blog-home' %}" method="post">
+                    {% csrf_token %}
+                    <input name="check" type="text" style="display: none">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="name" type="text" id="name" placeholder="Your name" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6 col-sm-12">
+                        <fieldset>
+                          <input name="email" type="text" id="email" placeholder="Your email" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-md-12 col-sm-12">
+                        <fieldset>
+                          <input name="subject" type="text" id="subject" placeholder="Subject">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <textarea name="message" rows="6" id="message" placeholder="Type your comment" required=""></textarea>
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-6">
+                        <fieldset>
+                          <button type="submit" id="form-submit2" class="main-button">Submit</button>
+                        </fieldset>
+                      </div>
+                        
+                        </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 d-none d-xl-block">
+            <div class="sidebar ">
+              <div class="row">
+
+                <div class="col-lg-12">
+                  <div class="recent-posts">
+                    <div class="sidebar-heading">
+                      <h2>Recent Posts</h2>
+                    </div>
+                    <div class="content">
+                      <ul>
+                        {% for post in posts|slice:":8" %}
+                          <li><a href="{% url 'blog-post' post.pk %}">
+                            <h5>{{ post.title }}</h5>
+                            <span>{{ post.date_posted|date:"F d, Y" }}</span>
+                          </a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="sidebar-item tags">
+                    <div class="sidebar-heading">
+                      <h2>Tags</h2>
+                    </div>
+                    <div class="content">
+                      <ul>
+                        {% for tag in tags %}
+                          <li><a href="{% url 'blog-tagdetails' tag %}">{{ tag.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main-content">
+              <div class="row">
+                <div class="col-lg-8">
+                  <span>Join the Toras Imecha WhatsApp Group!</span>
+                  <h4>Be the first to hear upcoming podcasts</h4>
+                </div>
+                <div class="col-lg-4">
+                  <div class="main-button">
+                    <a rel="nofollow" href="https://chat.whatsapp.com/JmNYPkAoLqxDXA0sxJhJRf" target="_blank">Join</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+<script>
+    int1 = Math.floor(Math.random()*15)+1
+    int2 = Math.floor(Math.random()*15)+1
+    sum = int1+int2
+    document.getElementById('form-submit').onclick = function() {
+        int1 = Math.floor(Math.random()*15)+1
+        int2 = Math.floor(Math.random()*15)+1
+        sum = int1+int2
+    };
+    document.getElementById('form-submit2').onclick = function() {
+        int1 = Math.floor(Math.random()*15)+1
+        int2 = Math.floor(Math.random()*15)+1
+        sum = int1+int2
+    };
+    submitForm = document.getElementById('comment');
+    
+    
+    submitForm.onsubmit = function() {
+        let solution = prompt(`Help us stop bots by practicing your math skills: What's ${int1} + ${int2}`)
+        if (solution == sum) {
+            return true;
+        }
+        return false;
+    }
+    
+    submitForm = document.getElementById('contactusform');
+    sum = int1+int2
+    submitForm.onsubmit = function() {
+        let solution = prompt(`Help us stop bots by practicing your math skills: What's ${int1} + ${int2}`)
+        if (solution == sum) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+</script>
+
+    {% endblock %}

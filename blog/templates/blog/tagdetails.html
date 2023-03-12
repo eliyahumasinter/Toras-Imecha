@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{tag}} tag{% endblock title %}
+{% block content %}
+<div class="heading-page header-text">
+    <section class="page-heading">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="text-content">
+              <h4>Results </h4>
+              <h2>{{ tag }}</h2>
+              <hr><br>
+              {% for post in tag.post_set.all %}
+              <a href="{% url 'blog-post' post.pk %}"><h3>{{ post }} - {{post.date_posted|date:"F d, Y" }}</h3></a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+
+  </div>
+
+</div>
+
+
+
+{% endblock content  %}

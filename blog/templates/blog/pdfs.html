@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block title %}About{% endblock title %}
+{% block navbardownloadslink %}active{% endblock %}
+{% block content %}
+
+  <div class="heading-page header-text">
+      <div class="container">
+        <div class="row">
+            {% for pdf in pdfs %}
+            <div class="col d-flex justify-content-center text-center ">
+              <div class="card" style="width: 18rem; margin: 1em;">
+                <img class="card-img-top" src="{{ pdf.picture.url }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{pdf.title}}</h5>
+                  <p class="card-text">{{pdf.description}}</p>
+                  <a href="{{ pdf.file.url }}" class="btn btn-primary" target=_blank>Download</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+{% endblock %}
